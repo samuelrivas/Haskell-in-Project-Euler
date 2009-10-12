@@ -16,4 +16,7 @@ arith_from x step (y:ys) =
 
 arith_from _ _ _ = []
 
+continue_seq (x:y:ys) = x : y : arith_from x (y-x) ys
 
+all_seqs (x:y:ys) = continue_seq (x:y:ys) : all_seqs (x:ys)
+all_seqs _ = []
