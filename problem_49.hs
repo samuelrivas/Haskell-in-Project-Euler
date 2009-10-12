@@ -10,8 +10,18 @@ fourDigitPrimes = [x | x <- primes, 1000 <= x]
 -- arith_seq (x:xs) = follow x xs : arith_seq xs
 -- arith_seq [] = []
 
--- follow x (y:ys) = [x, y]
+-- follow _ (y:[]) = []
 -- follow _ [] = []
+-- follow x (y:ys) = hops x y ys : follow x ys
+
+arith_from x step (y:ys) =
+           if (y - x) `mod` step == 0
+           then
+               y : arith_from x step ys
+           else
+               arith_from x step ys
+
+arith_from _ _ _ = []
 
 -- Digits of a number
 -- digits :: Int -> [Char]
