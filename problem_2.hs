@@ -6,6 +6,5 @@
 -- Find the sum of all the even-valued terms in the sequence which do not exceed
 -- four million.
 
-fib 1 = 0
-fib 2 = 1
-fib x = fib (x - 1) + fib (x - 2)
+fib n = let fibs = (1 : 2 : zipWith (+) fibs (tail fibs))
+        in fibs !! n
