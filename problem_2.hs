@@ -5,3 +5,7 @@
 --
 -- Find the sum of all the even-valued terms in the sequence which do not exceed
 -- four million.
+
+fib 1 = 0
+fib 2 = 1
+fib x = fib (x - 1) + fib (x - 2)
