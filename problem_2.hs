@@ -7,3 +7,7 @@
 -- four million.
 
 fibs = (1 : 2 : zipWith (+) fibs (tail fibs))
+
+sum_prune depth = sum [x | x <- take depth fibs, x `rem` 2 == 0, x < 4000000]
+
+solution = sum_prune 33
