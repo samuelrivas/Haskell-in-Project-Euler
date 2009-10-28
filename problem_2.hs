@@ -8,6 +8,6 @@
 
 fibs = (1 : 2 : zipWith (+) fibs (tail fibs))
 
-sum_prune depth = sum [x | x <- take depth fibs, x `rem` 2 == 0, x < 4000000]
+sum_fibs top = sum [x | x <- takeWhile ((>=) top) fibs, x `rem` 2 == 0]
 
-solution = sum_prune 33
+solution = sum_fibs 4000000
