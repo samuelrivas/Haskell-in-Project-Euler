@@ -8,6 +8,6 @@
 
 fibs = (1 : 2 : zipWith (+) fibs (tail fibs))
 
-sum_fibs top = sum [x | x <- takeWhile (<= top) fibs, even x]
+sum_fibs top = sum (filter even (takeWhile (<= top) fibs))
 
 solution = sum_fibs 4000000
