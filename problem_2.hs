@@ -8,6 +8,6 @@
 
 fibs = (1 : 2 : zipWith (+) fibs (tail fibs))
 
-sum_fibs top = sum [x | x <- takeWhile ((>=) top) fibs, x `rem` 2 == 0]
+sum_fibs top = sum [x | x <- takeWhile (<= top) fibs, x `rem` 2 == 0]
 
 solution = sum_fibs 4000000
