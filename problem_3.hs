@@ -14,3 +14,5 @@ factorisation n (x:primes) =
         x : (factorisation (n `div` x) (x:primes))
     else
         factorisation n primes
+
+result = last $ factorisation 600851475143 primes
