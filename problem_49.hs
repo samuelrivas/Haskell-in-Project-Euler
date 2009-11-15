@@ -8,6 +8,7 @@
 -- What 12-digit number do you form by concatenating the three terms in this
 -- sequence?
 
+import List
 
 -- List of prime numbers
 primes = sieve [2..9999]
@@ -25,3 +26,8 @@ arith_seqs (x:y:t)
 
 arith_seqs _ = []
 
+-- Get the digits in base 10 of n
+digits n = let aux
+                   | n < 10 = [n]
+                   | True = (n `mod` 10) : digits (n `div` 10)
+           in List.sort aux
