@@ -13,7 +13,6 @@ import List
 -- List of prime numbers
 primes = sieve [2..]
 sieve (x:xs) = x : sieve [y | y <- xs, mod y x /= 0]
-sieve [] = []
 
 -- List of 4 digit prime numbers
 fourDigitPrimes = takeWhile (< 10000) $ filter (> 999) primes
@@ -26,7 +25,7 @@ arith_seqs (x:y:t)
 
 arith_seqs _ = []
 
--- Get the digits in base 10 of n
+-- Sorted list of base-10 digits
 digits n = let aux
                    | n < 10 = [n]
                    | True = (n `mod` 10) : digits (n `div` 10)
