@@ -31,3 +31,7 @@ digits n = let aux
                    | n < 10 = [n]
                    | True = (n `mod` 10) : digits (n `div` 10)
            in List.sort aux
+
+-- See whether a tuple has three numbers with the same digits
+same_digits (x, y, z) =
+    (digits x) == (digits y) && (digits x) == (digits z)
