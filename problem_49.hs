@@ -17,17 +17,9 @@ sieve [] = []
 -- List of 4 digit prime numbers
 fourDigitPrimes = [x | x <- primes, 1000 <= x]
 
--- Arithmetic sequences
-arith_from x step (y:ys) =
-    if (y - x) `mod` step == 0
-    then
-        y : arith_from x step ys
-    else
-        arith_from x step ys
+-- Arithmetic sequences from the first element of the list
+arith_seqs (x:y:t)
+    | 2*y - x `elem` t = (x, y, 2*y - x) : arith_seqs (x:t)
+    | True = arith_seqs (x:t)
+arith_seqs _ = []
 
-arith_from _ _ _ = []
-
-continue_seq (x:y:ys) = x : y : arith_from x (y-x) ys
-
-all_seqs (x:y:ys) = continue_seq (x:y:ys) : all_seqs (x:ys)
-all_seqs _ = []
