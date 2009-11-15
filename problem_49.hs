@@ -11,12 +11,12 @@
 import List
 
 -- List of prime numbers
-primes = sieve [2..9999]
+primes = sieve [2..]
 sieve (x:xs) = x : sieve [y | y <- xs, mod y x /= 0]
 sieve [] = []
 
 -- List of 4 digit prime numbers
-fourDigitPrimes = [x | x <- primes, 1000 <= x]
+fourDigitPrimes = takeWhile (< 10000) $ filter (> 999) primes
 
 -- Arithmetic sequences from the first element of the list
 arith_seqs (x:y:t)
