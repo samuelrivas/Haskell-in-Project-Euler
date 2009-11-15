@@ -39,3 +39,12 @@ same_digits (x, y, z) =
 -- All arithmetic sequences filtered by same_digits
 all_seqs l@(x:xs) = (filter same_digits (arith_seqs l)) ++ all_seqs xs
 all_seqs [] = []
+
+-- solution
+get_sequence ((x,y,z):t) =
+    if x == 1487 then
+        get_sequence t
+    else
+        show x ++ show y ++ show z
+
+solution = get_sequence $ all_seqs fourDigitPrimes
