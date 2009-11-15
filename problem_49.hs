@@ -19,7 +19,9 @@ fourDigitPrimes = [x | x <- primes, 1000 <= x]
 
 -- Arithmetic sequences from the first element of the list
 arith_seqs (x:y:t)
-    | 2*y - x `elem` t = (x, y, 2*y - x) : arith_seqs (x:t)
+    | next `elem` t = (x, y, next) : arith_seqs (x:t)
     | True = arith_seqs (x:t)
+    where next = 2*y - x
+
 arith_seqs _ = []
 
