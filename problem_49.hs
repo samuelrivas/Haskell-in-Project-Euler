@@ -35,3 +35,7 @@ digits n = let aux
 -- See whether a tuple has three numbers with the same digits
 same_digits (x, y, z) =
     (digits x) == (digits y) && (digits x) == (digits z)
+
+-- All arithmetic sequences filtered by same_digits
+all_seqs l@(x:xs) = (filter same_digits (arith_seqs l)) ++ all_seqs xs
+all_seqs [] = []
